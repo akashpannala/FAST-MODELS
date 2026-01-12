@@ -18,7 +18,7 @@ model = nn.Sequential(
 )
 
 # Load the model
-model.load_state_dict(torch.load('mnist_model.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load('mnist_mlp_model.pth', map_location=torch.device('cpu')))
 model.eval()
 
 # Define image transformation
