@@ -32,8 +32,6 @@ valid_loader = DataLoader(valid_set, batch_size=batch_size)
 
 input_size = 1 * 28 * 28
 
-import torch.nn as nn
-
 class SimpleMLP(nn.Module):
     def __init__(self):
         super(SimpleMLP, self).__init__()
@@ -51,7 +49,6 @@ class SimpleMLP(nn.Module):
         return self.features(x)
 
 model = SimpleMLP().to(device)
-model
 
 loss_function = nn.CrossEntropyLoss()
 
@@ -79,7 +76,7 @@ def evaluate_model(model, test_loader, device):
         for images, labels in test_loader:
             images, labels = images.to(device), labels.to(device)
             outputs = model(images)
-            _, predicted = torch.max(outputs.data, 1);
+            _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
     accuracy = 100 * correct / total
